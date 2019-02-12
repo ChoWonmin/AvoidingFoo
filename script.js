@@ -4,19 +4,26 @@ const height = 720;
 const speed = 5;
 let tick = 0;
 
+const playerImage = new ImageController();
+const bombImage = new ImageController();
+
 const Player = function () {
-
-
-  const sizeX = 20;
-  const sizeY = 20;
+  const sizeX = 22;
+  const sizeY = 32;
   const speed = 10;
 
   this.x = width/2;
   this.y = height - sizeY;
   this.live = true;
 
+  playerImage.width = sizeX;
+  playerImage.height = sizeY;
+
+  playerImage.sw = 22;
+  playerImage.sh = 32;
+
   this.draw = () => {
-    rect(this.x, this.y, sizeX, sizeY);
+    playerImage.draw(this.x, this.y);
   };
 
   this.moveRight = () => {
@@ -36,7 +43,7 @@ const Player = function () {
 
 };
 const Bomb = function () {
-  this.size = 30;
+  this.size = 36;
   const speed = 5;
 
   this.x = Math.random() * width;
@@ -48,9 +55,13 @@ const Bomb = function () {
       this.y = 0;
   };
 
-  this.draw = () => rect(this.x, this.y, this.size, this.size);
+  bombImage.width = this.size;
+  bombImage.height = this.size;
+
+  this.draw = () => bombImage.draw(this.x, this.y);
 
 };
+
 
 const player = new Player();
 const bombs = [];
@@ -58,6 +69,9 @@ bombs.push(new Bomb());
 
 function setup() {
   createCanvas(width, height);
+  playerImage.preLoad('bomberman-movement.png');
+  bombImage.preLoad('bomberman-effect.png');
+
 }
 
 function update() {
@@ -80,7 +94,7 @@ function draw() {
   tick++;
 
   if (tick%60===0) {
-    if (bombs.length < 70)
+    if (bombs.length < 2)
       bombs.push(new Bomb());
   }
 
@@ -91,9 +105,11 @@ function draw() {
     player.conflict(bomb.x, bomb.y, 30);
   }
 
+
   if (!player.live)
     fill(255,0,0);
   player.draw();
+
 
 }
 
