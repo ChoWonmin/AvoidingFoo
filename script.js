@@ -22,6 +22,11 @@ const Player = function () {
     left: [{i:0, j:3}, {i:1, j:3}, {i:2, j:3}, {i:3, j:3}, {i:4, j:3}],
   };
 
+  const accMax = 10;
+  const acc = 0.3;
+  let accRight = 0;
+  let accLeft = 0;
+
   this.x = width/2;
   this.y = height - sizeY;
 
@@ -43,8 +48,12 @@ const Player = function () {
   };
 
   this.stop = () => {
-    if (status!=='die')
+    if (status!=='die') {
       status = 'live';
+      accRight = 0;
+      accLeft = 0;
+    }
+
   };
 
   this.moveRight = () => {
@@ -52,7 +61,9 @@ const Player = function () {
       return;
 
     if (this.x < width - sizeX) {
-      this.x += speed;
+      if (accRight < accMax)
+        accRight += acc;
+      this.x += speed + accRight;
     }
     status = 'right';
   };
@@ -61,8 +72,12 @@ const Player = function () {
     if (status === 'die')
       return;
 
-    if (this.x > 0)
-      this.x -= speed;
+    if (this.x > 0) {
+      if (accLeft < accMax)
+        accLeft += acc;
+      this.x -= speed + accLeft;
+    }
+
     status = 'left';
   };
 
