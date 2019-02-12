@@ -11,7 +11,13 @@ const ImageController = function() {
   this.sw = 24;
   this.sh = 24;
 
-  this.draw = (x, y) => image(img, x, y, this.width, this.height, 0, 0, this.sw, this.sh );
+  this.rowNum = 5;
+  this.colNum = 9;
+
+  this.draw = (x, y, i=0, j=0) => {
+    image(img, x, y, this.width, this.height, i%this.rowNum * this.sw, j%this.colNum * this.sh, this.sw, this.sh );
+  }
+
 
 };
 

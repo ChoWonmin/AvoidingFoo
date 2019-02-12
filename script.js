@@ -8,13 +8,22 @@ const playerImage = new ImageController();
 const bombImage = new ImageController();
 
 const Player = function () {
-  const sizeX = 22;
-  const sizeY = 32;
+
+  let tick = 0;
+  let time = 0;
+  const sizeX = 44;
+  const sizeY = 64;
   const speed = 10;
+  let status = 'live';
+  const statusMapper = {
+    live: [{i:2, j:0}],
+    die: [{i:2, j:0}, {i:2, j:1}, {i:2, j:2}, {i:2, j:3}],
+    right: [{i:0, j:1}, {i:1, j:1}, {i:2, j:1}, {i:3, j:1}, {i:4, j:1}],
+    left: [{i:0, j:3}, {i:1, j:3}, {i:2, j:3}, {i:3, j:3}, {i:4, j:3}],
+  };
 
   this.x = width/2;
   this.y = height - sizeY;
-  this.live = true;
 
   playerImage.width = sizeX;
   playerImage.height = sizeY;
@@ -22,43 +31,74 @@ const Player = function () {
   playerImage.sw = 22;
   playerImage.sh = 32;
 
+  playerImage.rowNum = 4;
+  playerImage.colNum = 5;
+
   this.draw = () => {
-    playerImage.draw(this.x, this.y);
+    tick++;
+    if(tick%10===0)
+      time++;
+    const len = statusMapper[status].length;
+    playerImage.draw(this.x, this.y, statusMapper[status][time%len].i, statusMapper[status][time%len].j);
   };
 
   this.moveRight = () => {
-    if (this.live && this.x < width - sizeX)
+    if (status === 'die')
+      return;
+
+    if (this.x < width - sizeX) {
       this.x += speed;
+    }
+    status = 'right';
   };
 
   this.moveLeft = () => {
-    if (this.live && this.x > 0)
+    if (status === 'die')
+      return;
+
+    if (this.x > 0)
       this.x -= speed;
+    status = 'left';
   };
 
   this.conflict = (x, y, size) => {
     if (this.x > x && this.x - sizeX < x+size && this.y < y+size)
-      this.live = false;
+      status = 'die';
   };
 
 };
 const Bomb = function () {
-  this.size = 36;
-  const speed = 5;
 
+  let status = 'drop';
+  const statusMapper = {
+    drop: {i:0, j:0},
+    explode: {i:0, j:3}
+  };
+  const speed = 5;
+  this.size = 36;
   this.x = Math.random() * width;
   this.y = 0;
 
   this.drop = () => {
     this.y += speed;
-    if (this.y > height)
+
+    if (this.y > height - 40)
+      status = 'explode';
+
+    if (this.y > height) {
+      this.x = Math.random() * width;
       this.y = 0;
+      status = 'drop';
+    }
+
   };
 
   bombImage.width = this.size;
   bombImage.height = this.size;
 
-  this.draw = () => bombImage.draw(this.x, this.y);
+  this.draw = () => {
+    bombImage.draw(this.x, this.y, statusMapper[status].i, statusMapper[status].j);
+  };
 
 };
 
