@@ -28,7 +28,7 @@ const Player = function () {
   playerImage.width = sizeX;
   playerImage.height = sizeY;
 
-  playerImage.sw = 22;
+  playerImage.sw = 21;
   playerImage.sh = 32;
 
   playerImage.rowNum = 4;
@@ -40,6 +40,11 @@ const Player = function () {
       time++;
     const len = statusMapper[status].length;
     playerImage.draw(this.x, this.y, statusMapper[status][time%len].i, statusMapper[status][time%len].j);
+  };
+
+  this.stop = () => {
+    if (status!=='die')
+      status = 'live';
   };
 
   this.moveRight = () => {
@@ -74,7 +79,7 @@ const Bomb = function () {
     drop: {i:0, j:0},
     explode: {i:0, j:3}
   };
-  const speed = 5;
+  const speed = 8;
   this.size = 36;
   this.x = Math.random() * width;
   this.y = 0;
@@ -102,7 +107,6 @@ const Bomb = function () {
 
 };
 
-
 const player = new Player();
 const bombs = [];
 bombs.push(new Bomb());
@@ -115,6 +119,9 @@ function setup() {
 }
 
 function update() {
+
+  if (keyIsPressed===false)
+    player.stop();
 
   if (keyIsDown(LEFT_ARROW))
     player.moveLeft();
@@ -134,7 +141,7 @@ function draw() {
   tick++;
 
   if (tick%60===0) {
-    if (bombs.length < 2)
+    if (bombs.length < 60)
       bombs.push(new Bomb());
   }
 
@@ -145,12 +152,8 @@ function draw() {
     player.conflict(bomb.x, bomb.y, 30);
   }
 
-
   if (!player.live)
     fill(255,0,0);
   player.draw();
 
-
 }
-
-
