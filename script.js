@@ -22,8 +22,8 @@ const Player = function () {
     left: [{i:0, j:3}, {i:1, j:3}, {i:2, j:3}, {i:3, j:3}, {i:4, j:3}],
   };
 
-  const accMax = 10;
-  const acc = 0.3;
+  const accMax = 15;
+  const acc = 0.6;
   let accRight = 0;
   let accLeft = 0;
 
@@ -82,7 +82,9 @@ const Player = function () {
   };
 
   this.conflict = (x, y, size) => {
-    if (this.x > x && this.x - sizeX < x+size && this.y < y+size)
+    if (this.x > x && this.x < x+size && this.y < y+size)
+      status = 'die';
+    else if (this.x < x && this.x + this.width < x && this.y < y+size)
       status = 'die';
   };
 
@@ -164,7 +166,7 @@ function draw() {
     const bomb = bombs[i];
     bomb.draw();
 
-    player.conflict(bomb.x, bomb.y, 30);
+    player.conflict(bomb.x, bomb.y, bomb.size);
   }
 
   if (!player.live)
