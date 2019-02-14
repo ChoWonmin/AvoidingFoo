@@ -4,6 +4,9 @@ const height = 720;
 const speed = 5;
 let tick = 0;
 
+
+setInterval(()=>{document.getElementsByClassName('score')[0].innerHTML = tick;}, 500);
+
 const playerImage = new ImageController();
 const bombImage = new ImageController();
 

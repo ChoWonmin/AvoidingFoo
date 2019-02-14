@@ -18,7 +18,11 @@ body {
 }
 
 .container .top .score{
+  font-size: 24px;
+  color: #062546;
   flex: 1;
+  text-indent: 24px;
+  line-height: 72px;
 }
 
 .container .top .btn{
