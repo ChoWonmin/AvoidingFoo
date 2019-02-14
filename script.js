@@ -129,10 +129,9 @@ const bombs = [];
 bombs.push(new Bomb());
 
 function setup() {
-  createCanvas(width, height);
+  createCanvas(width, height).parent('content');
   playerImage.preLoad('bomberman-movement.png');
   bombImage.preLoad('bomberman-effect.png');
-
 }
 
 function update() {
