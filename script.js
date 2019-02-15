@@ -25,8 +25,8 @@ const Player = function () {
     left: [{i:0, j:3}, {i:1, j:3}, {i:2, j:3}, {i:3, j:3}, {i:4, j:3}],
   };
 
-  const accMax = 15;
-  const acc = 0.6;
+  const accMax = 25;
+  const acc = 1.6;
   let accRight = 0;
   let accLeft = 0;
 
@@ -127,12 +127,14 @@ const Bomb = function () {
 
 };
 
+const mapImage = new ImageController();
 const player = new Player();
 const bombs = [];
 bombs.push(new Bomb());
 
 function setup() {
   createCanvas(width, height).parent('content');
+  mapImage.preLoad('ice.jpeg');
   playerImage.preLoad('bomberman-movement.png');
   bombImage.preLoad('bomberman-effect.png');
 }
@@ -156,6 +158,7 @@ function update() {
 function draw() {
   update();
   background(100, 100, 0);
+  mapImage.drawAll();
   fill(255);
   tick++;
 
@@ -174,5 +177,7 @@ function draw() {
   if (!player.live)
     fill(255,0,0);
   player.draw();
+
+
 
 }
