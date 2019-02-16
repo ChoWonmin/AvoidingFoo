@@ -19,7 +19,7 @@ const ImageController = function() {
   };
 
   this.drawAll = () => {
-    image(img, 0, 700, 1000, 20);
+    image(img, 0, 700, 1000, 40);
   };
 
 };
