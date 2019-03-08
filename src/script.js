@@ -1,7 +1,7 @@
 const width = 1000;
 const height = 720;
 
-const speed = 5;
+const speed = 2;
 let tick = 0;
 
 
@@ -45,8 +45,8 @@ function draw() {
   fill(255);
   tick++;
 
-  if (tick%60===0) {
-    if (bombs.length < 60)
+  if (tick%50===parseInt(Math.random()*50)) {
+    if (bombs.length < 35)
       bombs.push(new Bomb());
   }
 

@@ -4,7 +4,7 @@ const Player = function () {
   let time = 0;
   const sizeX = 44;
   const sizeY = 64;
-  const speed = 10;
+  const speed = 3;
   let status = 'live';
   const statusMapper = {
     live: [{i:2, j:0}],
@@ -14,7 +14,7 @@ const Player = function () {
   };
 
   const accMax = 25;
-  const acc = 1.6;
+  const acc = 2;
   let accRight = 0;
   let accLeft = 0;
 
