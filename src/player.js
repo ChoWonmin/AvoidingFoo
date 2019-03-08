@@ -38,13 +38,19 @@ const Player = function () {
     playerImage.draw(this.x, this.y, statusMapper[status][time%len].i, statusMapper[status][time%len].j);
   };
 
+  this.rebirth = () => {
+    status = 'live';
+    this.x = width/2;
+    accRight = 0;
+    accLeft = 0;
+  };
+
   this.stop = () => {
     if (status!=='die') {
       status = 'live';
       accRight = 0;
       accLeft = 0;
     }
-
   };
 
   this.moveRight = () => {

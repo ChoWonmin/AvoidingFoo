@@ -4,15 +4,12 @@ const height = 720;
 const speed = 2;
 let tick = 0;
 
-
-setInterval(()=>{document.getElementsByClassName('score')[0].innerHTML = tick;}, 500);
-
 const playerImage = new ImageController();
 const bombImage = new ImageController();
 
 const mapImage = new ImageController();
 const player = new Player();
-const bombs = [];
+let bombs = [];
 bombs.push(new Bomb());
 
 function setup() {
@@ -62,3 +59,11 @@ function draw() {
   player.draw();
 
 }
+
+const restartBtn = document.getElementById('newGame');
+restartBtn.addEventListener('click', ()=>{
+  tick = 0;
+  player.rebirth();
+  bombs = [];
+});
+setInterval(()=>{document.getElementsByClassName('score')[0].innerHTML = tick;}, 500);
