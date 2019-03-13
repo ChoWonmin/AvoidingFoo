@@ -2,6 +2,7 @@ const width = 1000;
 const height = 720;
 
 const speed = 2;
+let score = 0;
 let tick = 0;
 
 const playerImage = new ImageController();
@@ -20,6 +21,8 @@ function setup() {
 }
 
 function update() {
+  if (player.status==='live')
+    score++;
 
   if (keyIsPressed===false)
     player.stop();
@@ -32,6 +35,7 @@ function update() {
   for (let i=0; i<bombs.length; i++) {
     const bomb = bombs[i];
     bomb.drop();
+    player.conflict(bomb.x, bomb.y, bomb.size);
   }
 }
 
@@ -43,15 +47,13 @@ function draw() {
   tick++;
 
   if (tick%50===parseInt(Math.random()*50)) {
-    if (bombs.length < 35)
+    if (bombs.length < 20)
       bombs.push(new Bomb());
   }
 
   for (let i=0; i<bombs.length; i++) {
     const bomb = bombs[i];
     bomb.draw();
-
-    player.conflict(bomb.x, bomb.y, bomb.size);
   }
 
   if (!player.live)
@@ -63,7 +65,8 @@ function draw() {
 const restartBtn = document.getElementById('newGame');
 restartBtn.addEventListener('click', ()=>{
   tick = 0;
+  score = 0;
   player.rebirth();
   bombs = [];
 });
-setInterval(()=>{document.getElementsByClassName('score')[0].innerHTML = tick;}, 500);
+setInterval(()=>{document.getElementsByClassName('score')[0].innerHTML = score;}, 500);

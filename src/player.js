@@ -5,7 +5,7 @@ const Player = function () {
   const sizeX = 44;
   const sizeY = 64;
   const speed = 3;
-  let status = 'live';
+
   const statusMapper = {
     live: [{i:2, j:0}],
     die: [{i:2, j:0}, {i:2, j:1}, {i:2, j:2}, {i:2, j:3}],
@@ -18,6 +18,7 @@ const Player = function () {
   let accRight = 0;
   let accLeft = 0;
 
+  this.status = 'live';
   this.x = width/2;
   this.y = height - sizeY;
 
@@ -34,27 +35,27 @@ const Player = function () {
     tick++;
     if(tick%10===0)
       time++;
-    const len = statusMapper[status].length;
-    playerImage.draw(this.x, this.y, statusMapper[status][time%len].i, statusMapper[status][time%len].j);
+    const len = statusMapper[this.status].length;
+    playerImage.draw(this.x, this.y, statusMapper[this.status][time%len].i, statusMapper[this.status][time%len].j);
   };
 
   this.rebirth = () => {
-    status = 'live';
+    this.status = 'live';
     this.x = width/2;
     accRight = 0;
     accLeft = 0;
   };
 
   this.stop = () => {
-    if (status!=='die') {
-      status = 'live';
+    if (this.status!=='die') {
+      this.status = 'live';
       accRight = 0;
       accLeft = 0;
     }
   };
 
   this.moveRight = () => {
-    if (status === 'die')
+    if (this.status === 'die')
       return;
 
     if (this.x < width - sizeX) {
@@ -62,11 +63,11 @@ const Player = function () {
         accRight += acc;
       this.x += speed + accRight;
     }
-    status = 'right';
+    this.status = 'right';
   };
 
   this.moveLeft = () => {
-    if (status === 'die')
+    if (this.status === 'die')
       return;
 
     if (this.x > 0) {
@@ -75,14 +76,14 @@ const Player = function () {
       this.x -= speed + accLeft;
     }
 
-    status = 'left';
+    this.status = 'left';
   };
 
   this.conflict = (x, y, size) => {
     if (this.x > x && this.x < x+size && this.y < y+size)
-      status = 'die';
+      this.status = 'die';
     else if (this.x < x && this.x + this.width < x && this.y < y+size)
-      status = 'die';
+      this.status = 'die';
   };
 
 };
