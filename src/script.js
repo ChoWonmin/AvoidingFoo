@@ -64,6 +64,12 @@ restartBtn.addEventListener("click", () => {
   player.rebirth();
   bombs = [];
 });
+
+const leftBtn = document.getElementById("left-btn");
+leftBtn.addEventListener("click", () => {
+  console.log("left");
+});
+
 setInterval(() => {
   document.getElementsByClassName("score")[0].innerHTML = score;
 }, 500);
