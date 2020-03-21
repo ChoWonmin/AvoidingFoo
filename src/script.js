@@ -28,8 +28,6 @@ function setup() {
 function update() {
   if (keyIsPressed === false) player.stop();
 
-  console.log(controller);
-
   if (keyIsDown(LEFT_ARROW) || controller === 1) {
     player.moveLeft();
   } else if (keyIsDown(RIGHT_ARROW) || controller === 2) {

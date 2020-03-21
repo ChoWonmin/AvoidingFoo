@@ -44,20 +44,23 @@ body {
 }
 
 .container #controller {
-  display: flex;
+  width: 1000px;
+  display: none;
 }
 
-.container #controller .empty {
-  flex: 1;
+@media screen and (max-device-width: 600px) {
+  .container #controller {
+    display: flex;
+  }
 }
 
 .container #controller .controller-btn {
   flex: 1;
-  height: 72px;
+  height: 240px;
   background-color: #5c6bc0;
   color: #efefef;
   text-align: center;
-  line-height: 72px;
+  line-height: 240px;
   margin: 0 4px;
 }
 
