@@ -21,8 +21,8 @@ let controller = 0;
 function setup() {
   createCanvas(width, height).parent("content");
   mapImage.preLoad("ice.jpeg");
-  playerImage.preLoad("bomberman-movement.png");
-  bombImage.preLoad("bomberman-effect.png");
+  playerImage.preLoad("bomberman-movement.jpg");
+  bombImage.preLoad("bomberman-effect.jpg");
 }
 
 function update() {
@@ -36,12 +36,11 @@ function update() {
 
   if (player.status !== "die") {
     score++;
-  }
-
-  for (let i = 0; i < bombs.length; i++) {
-    const bomb = bombs[i];
-    bomb.drop();
-    player.conflict(bomb.x, bomb.y, bomb.size);
+    for (let i = 0; i < bombs.length; i++) {
+      const bomb = bombs[i];
+      bomb.drop();
+      player.conflict(bomb.x, bomb.y, bomb.size);
+    }
   }
 }
 
