@@ -21,8 +21,9 @@ let controller = 0;
 function setup() {
   createCanvas(width, height).parent("content");
   mapImage.preLoad("ice.jpeg");
-  playerImage.preLoad("bomberman-movement.jpg");
-  bombImage.preLoad("bomberman-effect.jpg");
+  playerImage.preLoad("bomberman-movement.png");
+  // bombImage.preLoad("bomberman-effect.jpg");
+  bombImage.preLoad("virus.png");
 }
 
 function update() {
@@ -53,7 +54,7 @@ function draw() {
   tick++;
 
   if (tick % 50 === parseInt(Math.random() * 50)) {
-    if (bombs.length < 3) bombs.push(new Bomb());
+    if (bombs.length < 20) bombs.push(new Bomb());
   }
 
   for (let i = 0; i < bombs.length; i++) {
