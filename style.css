@@ -20,21 +20,32 @@ body {
   display: flex;
 }
 
+.container .top .score-warpper {
+  background-color: #4c6e92;
+  flex: 1;
+  height: 72px;
+  margin: 4px 4px 4px 0;
+}
+.container .top #score-text {
+  font-size: 24px;
+  color: #faf8ef;
+  text-align: center;
+}
 .container .top .score {
   font-size: 24px;
-  color: #062546;
-  flex: 1;
-  text-indent: 24px;
-  line-height: 72px;
+  color: #efefef;
+  text-align: center;
 }
 
 .container .top .btn {
-  width: 120px;
+  flex: 2;
   height: 72px;
+  margin: 4px 0 4px 4px;
   background-color: #303f9f;
   color: #efefef;
   text-align: center;
   line-height: 72px;
+  font-size: 36px;
   cursor: pointer;
 }
 

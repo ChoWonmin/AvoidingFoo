@@ -99,7 +99,7 @@ const Player = function() {
     const offset = 3;
     const rangeX = [this.x + offset, this.x + sizeX - offset];
 
-    if (this.y < y - boomSize) {
+    if (this.y < y - boomSize && 5 < y - boomSize) {
       if (rangeX[0] < x && rangeX[1] > x) {
         this.status = "die";
       } else if (rangeX[0] < x + boomSize && rangeX[1] > x + boomSize) {

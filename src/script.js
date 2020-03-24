@@ -9,6 +9,8 @@ const playerImage = new ImageController();
 const bombImage = new ImageController();
 
 const mapImage = new ImageController();
+
+const alarm = new Alarm();
 const player = new Player();
 let bombs = [];
 bombs.push(new Bomb());
@@ -63,6 +65,11 @@ function draw() {
   }
 
   player.draw();
+
+  if (player.status === "die") {
+    fill("#DB4437");
+    alarm.draw(width / 2, height / 2, "코로나에 걸렸습니다 ㅜ");
+  }
 }
 
 const restartBtn = document.getElementById("newGame");
