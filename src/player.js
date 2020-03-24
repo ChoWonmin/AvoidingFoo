@@ -3,7 +3,7 @@ const Player = function() {
   let time = 0;
   const sizeX = 44;
   const sizeY = 64;
-  const speed = 1;
+  const speed = 0.8;
 
   const statusMapper = {
     live: [{ i: 2, j: 0 }],
@@ -29,8 +29,8 @@ const Player = function() {
     ]
   };
 
-  const accMax = 30;
-  const acc = 2;
+  const accMax = 25;
+  const acc = 1.1;
   let accRight = 0;
   let accLeft = 0;
 
@@ -78,7 +78,7 @@ const Player = function() {
     if (this.status === "die") return;
 
     if (this.x < width - sizeX) {
-      if (accRight < accMax) accRight += acc;
+      if (accRight < accMax) accRight += acc * acc;
       this.x += speed + accRight;
     }
     this.status = "right";
@@ -88,7 +88,7 @@ const Player = function() {
     if (this.status === "die") return;
 
     if (this.x > 0) {
-      if (accLeft < accMax) accLeft += acc;
+      if (accLeft < accMax) accLeft += acc * acc;
       this.x -= speed + accLeft;
     }
 
