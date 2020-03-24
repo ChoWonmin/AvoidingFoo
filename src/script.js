@@ -1,5 +1,5 @@
 const width = 1000;
-const height = 720;
+const height = 640;
 
 const speed = 2;
 let score = 0;
@@ -25,7 +25,7 @@ function setup() {
   mapImage.preLoad("ice.jpeg");
   playerImage.preLoad("bomberman-movement.png");
   // bombImage.preLoad("bomberman-effect.jpg");
-  bombImage.preLoad("virus.png");
+  bombImage.preLoad("virus02.png");
 }
 
 function update() {

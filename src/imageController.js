@@ -27,6 +27,6 @@ const ImageController = function() {
   };
 
   this.drawAll = () => {
-    image(img, 0, 660, 1000, 140);
+    image(img, 0, 480, 1000, 140);
   };
 };
