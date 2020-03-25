@@ -1,5 +1,6 @@
 const width = 1000;
 const height = 640;
+let startTime = 0;
 
 const speed = 2;
 let score = 0;
@@ -26,6 +27,8 @@ function setup() {
   playerImage.preLoad("bomberman-movement.png");
   // bombImage.preLoad("bomberman-effect.jpg");
   bombImage.preLoad("virus02.png");
+
+  startTime = new Date();
 }
 
 function update() {
@@ -43,17 +46,18 @@ function update() {
       const bomb = bombs[i];
       bomb.drop();
       player.conflict(bomb.x, bomb.y, bomb.size);
+
+      document.getElementsByClassName("score")[0].innerHTML = tick;
     }
   }
 }
 
 function draw() {
   update();
+  tick++;
 
   background(255, 255, 255);
   mapImage.drawAll();
-
-  tick++;
 
   if (tick % 50 === parseInt(Math.random() * 50)) {
     if (bombs.length < 20) bombs.push(new Bomb());
@@ -95,6 +99,6 @@ stopBtn.addEventListener("click", () => {
   controller = 0;
 });
 
-setInterval(() => {
-  document.getElementsByClassName("score")[0].innerHTML = score;
-}, 1000);
+// setInterval(() => {
+//   document.getElementsByClassName("score")[0].innerHTML = score;
+// }, 1000);
