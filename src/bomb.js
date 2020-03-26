@@ -4,26 +4,32 @@ const Bomb = function() {
     drop: { i: 0, j: 0 },
     explode: { i: 0, j: 0 }
   };
-  const speed = 10;
+  const speed = 6;
   this.size = 36;
   this.x = Math.random() * width;
   this.y = 0;
 
-  this.drop = () => {
+  this.drop = (height) => {
+    this.x += (Math.random() - 0.5) * 5;
     this.y += speed;
 
-    if (this.y > height - 40) status = "explode";
+    const offset = 15;
 
+    // if (this.y > height - this.size) {
+    //   status = "explode";
+    // }
+
+    console.log(this.y, height);
     if (this.y > height) {
       this.x = Math.random() * width;
-      this.y = -20;
+      this.y = -30;
       status = "drop";
+      console.log('new bomb');
     }
   };
 
   bombImage.width = this.size;
   bombImage.height = this.size;
-
   this.draw = () => {
     bombImage.draw(
       this.x,

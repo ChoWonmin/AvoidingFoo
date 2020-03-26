@@ -41,13 +41,12 @@ function update() {
   }
 
   if (player.status !== "die") {
-    score++;
     for (let i = 0; i < bombs.length; i++) {
       const bomb = bombs[i];
       bomb.drop();
       player.conflict(bomb.x, bomb.y, bomb.size);
 
-      document.getElementsByClassName("score")[0].innerHTML = tick;
+      document.getElementsByClassName("score")[0].innerHTML = score;
     }
   }
 }
@@ -59,8 +58,8 @@ function draw() {
   background(255, 255, 255);
   mapImage.drawAll();
 
-  if (tick % 50 === parseInt(Math.random() * 50)) {
-    if (bombs.length < 20) bombs.push(new Bomb());
+  if (tick % 25 === parseInt(Math.random() * 25)) {
+    if (bombs.length < 1) bombs.push(new Bomb());
   }
 
   for (let i = 0; i < bombs.length; i++) {
