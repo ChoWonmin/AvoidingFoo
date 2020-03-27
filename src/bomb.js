@@ -9,22 +9,20 @@ const Bomb = function() {
   this.x = Math.random() * width;
   this.y = 0;
 
-  this.drop = (height) => {
+  this.drop = () => {
     this.x += (Math.random() - 0.5) * 5;
     this.y += speed;
 
     const offset = 15;
 
-    // if (this.y > height - this.size) {
-    //   status = "explode";
-    // }
+    if (this.y > height - this.size) {
+      status = "explode";
+    }
 
-    console.log(this.y, height);
     if (this.y > height) {
       this.x = Math.random() * width;
-      this.y = -30;
+      this.y = -offset - this.size;
       status = "drop";
-      console.log('new bomb');
     }
   };
 
