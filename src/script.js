@@ -59,7 +59,7 @@ function draw() {
   mapImage.drawAll();
 
   if (tick % 25 === parseInt(Math.random() * 25)) {
-    if (bombs.length < 1) bombs.push(new Bomb());
+    if (bombs.length < 20) bombs.push(new Bomb());
   }
 
   for (let i = 0; i < bombs.length; i++) {
@@ -71,7 +71,7 @@ function draw() {
 
   if (player.status === "die") {
     fill("#DB4437");
-    alarm.draw(width / 2, height / 2, "코로나에 걸렸습니다 ㅜ");
+    alarm.draw(width / 2, height / 2, "사회적 거리두기 실패...");
   }
 }
 
