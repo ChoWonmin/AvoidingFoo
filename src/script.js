@@ -24,8 +24,9 @@ let controller = 0;
 function setup() {
   createCanvas(width, height).parent("content");
   mapImage.preLoad("ice.jpeg");
-  playerImage.preLoad("bomberman-movement.png");
-  // bombImage.preLoad("bomberman-effect.jpg");
+  // playerImage.preLoad("bomberman-movement.png");
+  playerImage.preLoad("player.png");
+  bombImage.preLoad("bomberman-effect.jpg");
   bombImage.preLoad("virus02.png");
 
   startTime = new Date();

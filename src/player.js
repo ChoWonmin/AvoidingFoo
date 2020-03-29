@@ -1,35 +1,31 @@
 const Player = function() {
   let tick = 0;
   let time = 0;
-  const sizeX = 44;
-  const sizeY = 64;
+  const sizeX = 54;
+  const sizeY = 66;
   const speed = 0.8;
 
   const statusMapper = {
-    live: [{ i: 2, j: 0 }],
+    live: [{ i: 1, j: 0 }],
     die: [
-      { i: 2, j: 0 },
-      { i: 2, j: 1 },
-      { i: 2, j: 2 },
-      { i: 2, j: 3 }
+      { i: 1, j: 0 },
+      { i: 1, j: 1 },
+      { i: 1, j: 2 },
+      { i: 1, j: 3 }
     ],
     right: [
       { i: 0, j: 1 },
       { i: 1, j: 1 },
-      { i: 2, j: 1 },
-      { i: 3, j: 1 },
-      { i: 4, j: 1 }
+      { i: 2, j: 1 }
     ],
     left: [
       { i: 0, j: 3 },
       { i: 1, j: 3 },
-      { i: 2, j: 3 },
-      { i: 3, j: 3 },
-      { i: 4, j: 3 }
+      { i: 2, j: 3 }
     ]
   };
 
-  const accMax = 25;
+  const accMax = 15;
   const acc = 1.1;
   let accRight = 0;
   let accLeft = 0;
@@ -41,11 +37,11 @@ const Player = function() {
   playerImage.width = sizeX;
   playerImage.height = sizeY;
 
-  playerImage.sw = 21;
-  playerImage.sh = 32;
+  playerImage.sw = 36;
+  playerImage.sh = 43;
 
   playerImage.rowNum = 4;
-  playerImage.colNum = 5;
+  playerImage.colNum = 3;
 
   this.draw = () => {
     tick++;
@@ -96,7 +92,7 @@ const Player = function() {
   };
 
   this.conflict = (x, y, boomSize) => {
-    const offset = 3;
+    const offset = 5;
     const rangeX = [this.x + offset, this.x + sizeX - offset];
 
     if (this.y < y - boomSize && height - offset > y) {

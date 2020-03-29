@@ -13,14 +13,17 @@ const ImageController = function() {
   this.colNum = 1;
 
   this.draw = (x, y, i = 0, j = 0) => {
+    if (j === 3) {
+      console.log({ x, y, i: i % this.rowNum, j: j % this.colNum });
+    }
     image(
       img,
       x,
       y,
       this.width,
       this.height,
-      (i % this.rowNum) * this.sw,
-      (j % this.colNum) * this.sh,
+      (i % this.colNum) * this.sw,
+      (j % this.rowNum) * this.sh,
       this.sw,
       this.sh
     );
