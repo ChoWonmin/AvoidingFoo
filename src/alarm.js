@@ -1,6 +1,6 @@
 const Alarm = function() {
-  const width = 500;
-  const height = 140;
+  const width = 800;
+  const height = 200;
 
   this.draw = (x, y, content) => {
     x = x - width / 2;

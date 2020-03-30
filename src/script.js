@@ -1,6 +1,5 @@
 const width = 1000;
 const height = 640;
-let startTime = 0;
 
 const speed = 2;
 let score = 0;
@@ -24,12 +23,8 @@ let controller = 0;
 function setup() {
   createCanvas(width, height).parent("content");
   mapImage.preLoad("ice.jpeg");
-  // playerImage.preLoad("bomberman-movement.png");
   playerImage.preLoad("player.png");
-  bombImage.preLoad("bomberman-effect.jpg");
-  bombImage.preLoad("virus02.png");
-
-  startTime = new Date();
+  bombImage.preLoad("bomb.png");
 }
 
 function update() {

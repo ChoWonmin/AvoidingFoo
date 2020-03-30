@@ -92,7 +92,7 @@ const Player = function() {
   };
 
   this.conflict = (x, y, boomSize) => {
-    const offset = 5;
+    const offset = 7;
     const rangeX = [this.x + offset, this.x + sizeX - offset];
 
     if (this.y < y - boomSize && height - offset > y) {
