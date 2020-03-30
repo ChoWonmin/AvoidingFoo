@@ -13,7 +13,9 @@ const mapImage = new ImageController();
 const alarm = new Alarm();
 const player = new Player();
 let bombs = [];
-bombs.push(new Bomb());
+for (let i = 0; i < 3; i++) {
+  bombs.push(new Bomb());
+}
 
 // 0: stop
 // 1: left
@@ -77,6 +79,9 @@ restartBtn.addEventListener("click", () => {
   score = 0;
   player.rebirth();
   bombs = [];
+  for (let i = 0; i < 3; i++) {
+    bombs.push(new Bomb());
+  }
 });
 
 const leftBtn = document.getElementById("left-btn");

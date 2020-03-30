@@ -53,6 +53,7 @@ body {
 .container .top #sub-text {
   font-size: 24px;
   text-align: center;
+  color: #4b4b4b;
 }
 
 .container .top .btn {

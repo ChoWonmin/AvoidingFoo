@@ -1,7 +1,14 @@
 {
-  "hosting": {
-    "target": "mini",
-    "public": ".",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
-  }
+  "hosting": [
+    {
+      "target": "mini",
+      "public": ".",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+    },
+    {
+      "target": "game",
+      "public": ".",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+    }
+  ]
 }

@@ -7,7 +7,7 @@ const Bomb = function() {
   const speed = 7;
   this.size = 36;
   this.x = Math.random() * width;
-  this.y = 0;
+  this.y = Math.random() * -300;
 
   this.drop = () => {
     this.x += (Math.random() - 0.5) * 3;

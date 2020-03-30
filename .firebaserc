@@ -1,19 +1,12 @@
 {
-  "projects": {
-    "default": "corona-watcher-a6cda"
-  },
   "targets": {
     "corona-watcher-a6cda": {
       "hosting": {
-        "game": [
-          "resource-name"
-        ],
-        "foo": [
-          "game-efa5a.web.app",
-          "game-efa5asafsfsadf"
-        ],
         "mini": [
           "game-efa5a"
+        ],
+        "game": [
+          "corona-watcher-a6cda"
         ]
       }
     }

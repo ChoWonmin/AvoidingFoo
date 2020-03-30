@@ -1,8 +1,8 @@
 const Player = function() {
   let tick = 0;
   let time = 0;
-  const sizeX = 54;
-  const sizeY = 66;
+  const sizeX = 48;
+  const sizeY = 60;
   const speed = 0.6;
 
   const statusMapper = {
@@ -45,7 +45,7 @@ const Player = function() {
 
   this.draw = () => {
     tick++;
-    if (tick % 10 === 0) time++;
+    if (tick % 30 === 0) time++;
     const len = statusMapper[this.status].length;
     playerImage.draw(
       this.x,
