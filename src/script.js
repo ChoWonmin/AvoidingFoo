@@ -1,5 +1,5 @@
-const width = 1000;
-const height = 640;
+const width = 800;
+const height = 600;
 
 const speed = 2;
 let score = 0;
@@ -54,8 +54,8 @@ function draw() {
   background(255, 255, 255);
   mapImage.drawAll();
 
-  if (tick % 25 === parseInt(Math.random() * 25)) {
-    if (bombs.length < 20) bombs.push(new Bomb());
+  if (tick % 600 === parseInt(Math.random() * 10)) {
+    if (bombs.length < 18) bombs.push(new Bomb());
   }
 
   for (let i = 0; i < bombs.length; i++) {
@@ -93,7 +93,3 @@ const stopBtn = document.getElementById("stop-btn");
 stopBtn.addEventListener("click", () => {
   controller = 0;
 });
-
-// setInterval(() => {
-//   document.getElementsByClassName("score")[0].innerHTML = score;
-// }, 1000);

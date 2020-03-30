@@ -3,7 +3,7 @@ const Player = function() {
   let time = 0;
   const sizeX = 54;
   const sizeY = 66;
-  const speed = 0.8;
+  const speed = 0.6;
 
   const statusMapper = {
     live: [{ i: 1, j: 0 }],

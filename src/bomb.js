@@ -4,13 +4,13 @@ const Bomb = function() {
     drop: { i: 0, j: 0 },
     explode: { i: 0, j: 0 }
   };
-  const speed = 8;
+  const speed = 7;
   this.size = 36;
   this.x = Math.random() * width;
   this.y = 0;
 
   this.drop = () => {
-    this.x += (Math.random() - 0.5) * 8;
+    this.x += (Math.random() - 0.5) * 3;
     this.y += speed;
 
     const offset = 15;
