@@ -27,7 +27,7 @@ body {
   height: 72px;
   margin: 4px 4px 4px 0;
 }
-.container .top .score-warpper #score-text {
+.container .top .score-warpper .score-text {
   font-size: 16px;
   color: #faf8ef;
   text-align: center;
@@ -42,7 +42,7 @@ body {
 }
 
 .container .top .title-warpper {
-  flex: 2;
+  flex: 3;
   height: 72px;
   margin: 4px 4px 4px 0;
 }

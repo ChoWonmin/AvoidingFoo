@@ -3,6 +3,16 @@ const height = 600;
 
 const speed = 2;
 let score = 0;
+
+let scoreList = [0];
+let maxScore = window.localStorage.getItem("maxScore");
+
+if (maxScore !== null) {
+  scoreList.push(maxScore);
+}
+
+document.getElementsByClassName("score")[1].innerHTML = Math.max(...scoreList);
+
 let tick = 0;
 
 const playerImage = new ImageController();
@@ -46,6 +56,11 @@ function update() {
 
       document.getElementsByClassName("score")[0].innerHTML = score;
     }
+  } else {
+    scoreList.push(score);
+    maxScore = Math.max(...scoreList);
+    document.getElementsByClassName("score")[1].innerHTML = maxScore;
+    window.localStorage.setItem("maxScore", maxScore);
   }
 }
 

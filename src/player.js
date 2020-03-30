@@ -45,7 +45,7 @@ const Player = function() {
 
   this.draw = () => {
     tick++;
-    if (tick % 30 === 0) time++;
+    if (tick % 20 === 0) time++;
     const len = statusMapper[this.status].length;
     playerImage.draw(
       this.x,
