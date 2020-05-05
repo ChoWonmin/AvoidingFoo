@@ -84,7 +84,7 @@ function draw() {
 
   if (player.status === "die") {
     fill("#DB4437");
-    alarm.draw(width / 2, height / 2, "사회적 거리두기 실패...");
+    alarm.draw(width / 2, height / 2, "Socail Distancing Failure");
   }
 }
 
