@@ -1,4 +1,4 @@
-const Player = function() {
+const Player = function () {
   let tick = 0;
   let time = 0;
   const sizeX = 48;
@@ -11,18 +11,18 @@ const Player = function() {
       { i: 1, j: 0 },
       { i: 1, j: 1 },
       { i: 1, j: 2 },
-      { i: 1, j: 3 }
+      { i: 1, j: 3 },
     ],
     right: [
       { i: 0, j: 1 },
       { i: 1, j: 1 },
-      { i: 2, j: 1 }
+      { i: 2, j: 1 },
     ],
     left: [
       { i: 0, j: 3 },
       { i: 1, j: 3 },
-      { i: 2, j: 3 }
-    ]
+      { i: 2, j: 3 },
+    ],
   };
 
   const accMax = 15;
@@ -92,7 +92,7 @@ const Player = function() {
   };
 
   this.conflict = (x, y, boomSize) => {
-    const offset = 7;
+    const offset = 10;
     const rangeX = [this.x + offset, this.x + sizeX - offset];
 
     if (this.y < y - boomSize && height - offset > y) {
